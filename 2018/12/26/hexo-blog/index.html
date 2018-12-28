@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="title: 使用hexo部署一个博客服务器date: 2018-12-25 18:38:04tags: 使用hexo部署一个博客服务器 环境准备  安装node.js 安装git  如果不会, 自行百度 安装hexo相关的工具  全局安装 hexo-clinpm i hexo-cli -g   创建一个博客项目  使用hexo init &amp;lt;目录名&amp;gt;下载时间较长, 比较耗时, 需要去g">
+<meta name="description" content="使用hexo部署一个博客服务器环境准备  安装node.js 安装git  安装hexo相关的工具  全局安装 hexo-clinpm i hexo-cli -g   创建一个博客项目  使用hexo init &amp;lt;目录名&amp;gt;下载时间较长, 比较耗时, 需要去github下载模板代码hexo init hexo-blog  使用npm install安装项目依赖cd hexo-blog n">
 <meta name="keywords" content="Web,前端,node,ES6,开发,程序员,技术宅,java,android,Python,爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo_blog">
 <meta property="og:url" content="http://yoursite.com/2018/12/26/hexo-blog/index.html">
 <meta property="og:site_name" content="思思的个人博客">
-<meta property="og:description" content="title: 使用hexo部署一个博客服务器date: 2018-12-25 18:38:04tags: 使用hexo部署一个博客服务器 环境准备  安装node.js 安装git  如果不会, 自行百度 安装hexo相关的工具  全局安装 hexo-clinpm i hexo-cli -g   创建一个博客项目  使用hexo init &amp;lt;目录名&amp;gt;下载时间较长, 比较耗时, 需要去g">
+<meta property="og:description" content="使用hexo部署一个博客服务器环境准备  安装node.js 安装git  安装hexo相关的工具  全局安装 hexo-clinpm i hexo-cli -g   创建一个博客项目  使用hexo init &amp;lt;目录名&amp;gt;下载时间较长, 比较耗时, 需要去github下载模板代码hexo init hexo-blog  使用npm install安装项目依赖cd hexo-blog n">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-26T06:04:36.884Z">
+<meta property="og:updated_time" content="2018-12-27T08:05:02.229Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo_blog">
-<meta name="twitter:description" content="title: 使用hexo部署一个博客服务器date: 2018-12-25 18:38:04tags: 使用hexo部署一个博客服务器 环境准备  安装node.js 安装git  如果不会, 自行百度 安装hexo相关的工具  全局安装 hexo-clinpm i hexo-cli -g   创建一个博客项目  使用hexo init &amp;lt;目录名&amp;gt;下载时间较长, 比较耗时, 需要去g">
+<meta name="twitter:description" content="使用hexo部署一个博客服务器环境准备  安装node.js 安装git  安装hexo相关的工具  全局安装 hexo-clinpm i hexo-cli -g   创建一个博客项目  使用hexo init &amp;lt;目录名&amp;gt;下载时间较长, 比较耗时, 需要去github下载模板代码hexo init hexo-blog  使用npm install安装项目依赖cd hexo-blog n">
 
 
 
@@ -276,6 +276,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/26/hexo-blog/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/26/hexo-blog/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -300,14 +310,11 @@
       
 
       
-        <p>title: 使用hexo部署一个博客服务器<br>date: 2018-12-25 18:38:04<br>tags:</p>
-<p>使用hexo部署一个博客服务器</p>
-<p>环境准备</p>
+        <h2 id="使用hexo部署一个博客服务器"><a href="#使用hexo部署一个博客服务器" class="headerlink" title="使用hexo部署一个博客服务器"></a>使用hexo部署一个博客服务器</h2><p>环境准备</p>
 <ol>
 <li>安装node.js</li>
 <li>安装git</li>
 </ol>
-<p>如果不会, 自行百度</p>
 <p>安装hexo相关的工具</p>
 <ol>
 <li>全局安装 hexo-cli<pre><code>npm i hexo-cli -g
@@ -321,11 +328,11 @@
 npm i
 </code></pre></li>
 <li>当安装完毕后, 目录中就会有一系列文件, 其中 _config.yml 存放着博客的配置信息</li>
-<li>_config.yml 配置项如下:<pre><code>title: 天成的个人博客 # 标题
+<li>_config.yml 配置项如下:<pre><code>title: ***的个人博客 # 标题
 subtitle: Code is my life. # 子标题
 description: Code is my life. # 描述
 keywords: Web,前端,node,ES6,开发,程序员,技术宅,java,android,Python,爬虫 # 关键词, 用于做SEO优化
-author: 李天成 # 作者
+author: *** # 作者
 language: zh-CN # 语言
 timezone: Asia/Shanghai # 时区
 </code></pre>更多配置参见官网配置文档</li>
@@ -337,8 +344,7 @@ timezone: Asia/Shanghai # 时区
 </code></pre>默认开启端口是4000, 通过 -p 可以指定端口号<pre><code>hexo server -p 80
 </code></pre></li>
 </ol>
-<p>hexo与github.io爱的结晶</p>
-<p>Github给每个用户都提供了一个轻量级的web服务器, 每个人的域名是: 用户名.github.io</p>
+<h2 id="hexo与github-io的结合"><a href="#hexo与github-io的结合" class="headerlink" title="hexo与github.io的结合"></a>hexo与github.io的结合</h2><p>Github给每个用户都提供了一个轻量级的web服务器, 每个人的域名是: 用户名.github.io</p>
 <p>非常适合做博客, 这里就可以结合hexo生成的静态文件部署一个属于自己的个人博客</p>
 <ol>
 <li>在github上新建一个仓库, 仓库名必须是github用户名.github.io</li>
@@ -354,7 +360,6 @@ timezone: Asia/Shanghai # 时区
 hexo d
 </code></pre></li>
 </ol>
-<p>设置hexo的主题</p>
 
       
     </div>
@@ -417,6 +422,9 @@ hexo d
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -439,8 +447,17 @@ hexo d
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -482,6 +499,22 @@ hexo d
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用hexo部署一个博客服务器"><span class="nav-number">1.</span> <span class="nav-text">使用hexo部署一个博客服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo与github-io的结合"><span class="nav-number">2.</span> <span class="nav-text">hexo与github.io的结合</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -657,6 +690,28 @@ hexo d
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'pSVSmENdipI4m6hsAphtKGxL-gzGzoHsz',
+        appKey: 'DdFNKpUPVKQ3k60fJ69EPOoM',
+        placeholder: '请输入评论内容',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
