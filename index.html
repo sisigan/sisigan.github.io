@@ -233,6 +233,218 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/30/webpack01/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="甘思思">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="思思的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/30/webpack01/" itemprop="url">webpack01</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-30T15:53:16+08:00">
+                2018-12-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/30/webpack01/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/30/webpack01/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="webpack基本使用"><a href="#webpack基本使用" class="headerlink" title="webpack基本使用"></a>webpack基本使用</h2><ol>
+<li><p>在项目中安装webpack包</p>
+<pre><code>npm install -D webpack
+npm install -D webpack-cli
+</code></pre><p>注意事项: 如果安装的是4以上的版本, 还需要装cli的包</p>
+</li>
+<li><p>在全局安装webpack包</p>
+<pre><code>npm install webpack -g
+npm install webpack-cli -g
+</code></pre></li>
+<li>使用全局的webpack指令, 编译输出文件<br>与webpack3不同, webpack4使用指令时, 必须加上 -o 的参数才可以正确的输出到./dist目录下<pre><code>webpack main.js -o ./dist/main.js
+</code></pre></li>
+</ol>
+<h2 id="webpack的配置文件"><a href="#webpack的配置文件" class="headerlink" title="webpack的配置文件"></a>webpack的配置文件</h2><p>如果每次执行webpack指令时都需要指定入口和出口, 就太麻烦了, 官方文档也提供了一种配置文件的方式, 只需要在项目的根目录下新建一个名为: webpack.config.js 文件, 并且遵循CommonJS规范对外暴露一个配置对象, 按照官方文档进行配置, 即可每次只需要输入webpack自动查找配置文件进行编译打包:</p>
+<p>webpack.config.js文件配置如下:</p>
+<pre><code>// 完全遵循了CommonJS规范  这里可以直接写node平台的代码
+const path = require(&apos;path&apos;)
+
+module.exports = {
+  entry: &apos;./main.js&apos;, // 指定入口, 相对路径和绝对路径均可
+  output: {
+    path: path.join(__dirname, &apos;./dist&apos;), // 指定出口目录, 必须是绝对路径, 相对路径会报错!!!
+    filename: &apos;bundle.js&apos; // 指定出口文件名
+  }, // 指定出口, 如果不设置, 默认是 ./dist 目录, 输出入口文件同名的文件
+  mode: &apos;development&apos; // 开发  developer 开发者  Programmer 程序员
+}
+</code></pre><h2 id="webpack-dev-server的使用"><a href="#webpack-dev-server的使用" class="headerlink" title="webpack-dev-server的使用"></a>webpack-dev-server的使用</h2><p>每次修改代码都需要手动运行webpack指令, 不符合开发人员的需求</p>
+<p>所以可以结合webpack-dev-server工具, 完成自动化编译打包</p>
+<ol>
+<li>安装webpack-dev-server<br>必须先安装webpack和webpack-cli在项目开发依赖!<pre><code>npm i webpack webpack-cli -D
+</code></pre>再安装webpack-dev-server到项目开发依赖<pre><code>npm i webpack-dev-server -D
+</code></pre></li>
+<li>在package.json的scripts节点中配置一个运行脚本<br>因为webpack-dev-server是安装在项目开发依赖, 无法全局直接运行, 所以必须在package.json中配置运行脚本<pre><code>&quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;dev&quot;: &quot;webpack-dev-server&quot;
+ },
+</code></pre></li>
+<li>配置完脚本后, 通过npm run dev可以运行脚本<pre><code>npm run dev
+</code></pre></li>
+</ol>
+<h3 id="webpack-dev-server的特点"><a href="#webpack-dev-server的特点" class="headerlink" title="webpack-dev-server的特点"></a>webpack-dev-server的特点</h3><ol>
+<li>运行npm run dev后, 会启动一个web服务器, 将项目根目录托管到web服务器中</li>
+<li>每当修改了项目中的main.js文件后就会自动编译</li>
+<li>编译输出的文件被托管在项目根目录下, 是一个虚拟文件, 通过<a href="http://localhost:8080/bundle.js可以直接访问" target="_blank" rel="noopener">http://localhost:8080/bundle.js可以直接访问</a>, 但是不会存储在物理磁盘上, 而是放在内存中<br>因为放在物理磁盘上影响效率, 而且对磁盘的寿命也有影响</li>
+</ol>
+<p>了解了webpack-dev-server的特点后, 在index.html中, 就不能再引入 ../dist/bundle.js 而是应该引入, web服务器根目录的bundle.js</p>
+<pre><code>&lt;script src=&quot;/bundle.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>每次修改了main.js后会自动编译输出到根目录的内存中的bundle.js文件, 同时还支持自动刷新浏览器</p>
+<p>注意: webpack-dev-server, 主要作用就是在开发阶段方便程序员频繁修改代码, 自动看效果, 如果项目最终上线, 还是需要使用webpack进行打包编译输出到物理磁盘的dist目录</p>
+<h2 id="webpack-dev-server的常用参数"><a href="#webpack-dev-server的常用参数" class="headerlink" title="webpack-dev-server的常用参数"></a>webpack-dev-server的常用参数</h2><pre><code>--open // 自动打开浏览器
+--port // 自定义端口号
+--contentBase // 指定托管的根目录
+--hot // 热模块替换 HMR Hot Module Replacement
+</code></pre><p>在package.json的scripts节点下设置:</p>
+<pre><code>&quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;dev&quot;: &quot;webpack-dev-server --open --port 3000 --contentBase ./src --hot&quot;
+ },
+</code></pre><h2 id="webpack-dev-server参数写入配置-第二种设置参数的方式"><a href="#webpack-dev-server参数写入配置-第二种设置参数的方式" class="headerlink" title="webpack-dev-server参数写入配置(第二种设置参数的方式)"></a>webpack-dev-server参数写入配置(第二种设置参数的方式)</h2><p>可以不再命令后面使用参数, package.json中直接调用webpack-dev-server</p>
+<p>在package.json的scripts节点下设置:</p>
+<pre><code>&quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;dev&quot;: &quot;webpack-dev-server&quot;,
+    &quot;dev2&quot;: &quot;webpack-dev-server --open --port 3000 --contentBase ./src --hot&quot;
+},
+</code></pre><p>参数在webpack.config.js文件中的devServer节点中设置:</p>
+<pre><code>devServer: {
+    contentBase: path.join(__dirname, &apos;src&apos;), // 托管根路径
+    compress: true, // 启用压缩
+    port: 3000, // 端口号
+    open: true, // 自动打开浏览器
+    hot: true // 2. 开启热更新  如果设置hot为true 需要手动添加HMR插件, 详见第三步
+},
+</code></pre><p>注意: 必须有 webpack.HotModuleReplacementPlugin 才能完全启用 HMR, 如果 webpack 或 webpack-dev-server 是通过 –hot 选项启动的，那么这个插件会被自动添加, 反之需要手动添加HMR插件, 在plugins节点下创建HMR对象即可</p>
+<pre><code>// 1. 导入webpack
+const webpack = require(&apos;webpack&apos;)
+
+module.exports = {
+    // ...
+    plugins: [ // 插件配置项
+        new webpack.HotModuleReplacementPlugin(), // 3. 添加热更新插件
+    ],
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/26/hexo-blog/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -583,7 +795,7 @@ hexo d
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
